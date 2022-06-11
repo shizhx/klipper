@@ -128,3 +128,7 @@ The canboot directory contains code from:
 revision ae687a404d0edb2724a084f78e565dbc7dd505aa.  The Python module,
 flash_can.py, is taken from the repo's scripts directory.  It may be
 used to upload firmware to devices flashed with the CanBoot bootloader.
+
+The esp32 directory contains code from:
+  https://github.com/espressif/esp-idf
+revision b531745a11adafffc5558ef7ee2b9f65ba0806ba.
