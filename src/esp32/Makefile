@@ -1,12 +1,26 @@
 # esp32 series build rules
 
 # Setup the toolchain
-# TODO: ESP32-C3
-CROSS_PREFIX=xtensa-esp32-elf-
+CROSS_PREFIX=$(patsubst "%",%,$(CONFIG_CROSS_PREFIX))
+MCU=$(patsubst "%",%,$(CONFIG_MCU))
 
-dirs-y += src/esp32 src/generic
+# Libraries source
+
+dirs-y += src/esp32 \
+	src/generic
+
+CFLAGS += -Ilib/esp32/config/$(MCU) \
+	-Ilib/esp32/esp_common/include \
+	-Ilib/esp32/xtensa/include \
+	-Ilib/esp32/xtensa/$(MCU)/include \
+	-Ilib/esp32/soc/include \
+	-Ilib/esp32/soc/$(MCU)/include \
+	-Ilib/esp32/hal/include \
+	-Ilib/esp32/hal/$(MCU)/include \
+	-Ilib/esp32/hal/platform_port/include
 
 CFLAGS_klipper.elf += --specs=nano.specs --specs=nosys.specs
+CFLAGS_klipper.elf += -T lib/esp32/ld/$(MCU)/memory.ld -T lib/esp32/ld/$(MCU)/sections.ld -T lib/esp32/soc/$(MCU)/ld/$(MCU).peripherals.ld
 
 # Add source files
 src-y += esp32/main.c esp32/gpio.c

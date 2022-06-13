@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 /*  Default entry point:  */
-ENTRY(call_start_cpu0);
+ENTRY(main);
 
 SECTIONS
 {

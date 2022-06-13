@@ -6,12 +6,11 @@
  * This file may be distributed under the terms of the GNU GPLv3 license.
  */
 
+#include <stddef.h>
+
 /**
  * @brief entry point of app, ran after bootloader
- *
- * @return int
  */
-int main(void)
-{
+int main(void) {
     return 0;
 }

@@ -25,25 +25,37 @@ choice
         bool "ESP32"
     config MACH_ESP32_S2
         bool "ESP32-S2"
-    config MACH_ESP32_C3
-        bool "ESP32-C3"
     config MACH_ESP32_S3
         bool "ESP32-S3"
+    config MACH_ESP32_C2
+        bool "ESP32-C2"
+    config MACH_ESP32_C3
+        bool "ESP32-C3"
 endchoice
 
 config MCU
     string
-    default "ESP32" if MACH_ESP32_32
-    default "ESP32-S2" if MACH_ESP32_S2
-    default "ESP32-C3" if MACH_ESP32_C3
-    default "ESP32-S3" if MACH_ESP32_S3
+    default "esp32" if MACH_ESP32_32
+    default "esp32s2" if MACH_ESP32_S2
+    default "esp32s3" if MACH_ESP32_S3
+    default "esp32c2" if MACH_ESP32_C2
+    default "esp32c3" if MACH_ESP32_C3
+
+config CROSS_PREFIX
+    string
+    default "xtensa-esp32-elf-" if MACH_ESP32_32
+    default "xtensa-esp32s2-elf-" if MACH_ESP32_S2
+    default "xtensa-esp32s3-elf-" if MACH_ESP32_33
+    default "riscv32-esp-elf-" if MACH_ESP32_C2
+    default "riscv32-esp-elf-" if MACH_ESP32_C3
 
 config CLOCK_FREQ
     int
     default 240000000 if MACH_ESP32_32
     default 240000000 if MACH_ESP32_S2
-    default 160000000 if MACH_ESP32_C3
     default 240000000 if MACH_ESP32_S3
+    default 120000000 if MACH_ESP32_C2
+    default 160000000 if MACH_ESP32_C3
 
 config FLASH_SIZE
     hex
