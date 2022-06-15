@@ -7,10 +7,12 @@
  */
 
 #include <stddef.h>
+#include "sched.h"
 
 /**
  * @brief entry point of app, ran after bootloader
  */
 int main(void) {
+    sched_main();
     return 0;
 }

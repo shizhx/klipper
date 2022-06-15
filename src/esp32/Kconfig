@@ -49,6 +49,16 @@ config CROSS_PREFIX
     default "riscv32-esp-elf-" if MACH_ESP32_C2
     default "riscv32-esp-elf-" if MACH_ESP32_C3
 
+config ESP_TIMER_IMPL_TG0_LAC
+    bool
+    default y
+    depends on MACH_ESP32_32
+
+config ESP_TIMER_IMPL_SYSTIMER
+    bool
+    default y
+    depends on !MACH_ESP32_32
+
 config CLOCK_FREQ
     int
     default 240000000 if MACH_ESP32_32
