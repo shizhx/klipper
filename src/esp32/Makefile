@@ -23,7 +23,7 @@ CFLAGS_klipper.elf += --specs=nano.specs --specs=nosys.specs
 CFLAGS_klipper.elf += -T lib/esp32/ld/$(MCU)/memory.ld -T lib/esp32/ld/$(MCU)/sections.ld -T lib/esp32/soc/$(MCU)/ld/$(MCU).peripherals.ld
 
 # Add source files
-src-y += esp32/main.c esp32/gpio.c esp32/timer.c
+src-y += esp32/main.c esp32/gpio.c esp32/timer.c generic/alloc.c
 src-y += generic/crc16_ccitt.c
 src-$(CONFIG_ESP_TIMER_IMPL_TG0_LAC) += esp32/timer_impl_lac.c
 src-$(CONFIG_ESP_TIMER_IMPL_SYSTIMER) += esp32/timer_impl_systimer.c
@@ -31,7 +31,7 @@ src-$(CONFIG_HAVE_GPIO_ADC) += esp32/adc.c
 src-$(CONFIG_HAVE_GPIO_I2C) += esp32/i2c.c
 src-$(CONFIG_HAVE_GPIO_SPI) += esp32/spi.c
 src-$(CONFIG_USBSERIAL) += esp32/usbserial.c esp32/chipid.c
-# src-$(CONFIG_USBSERIAL) += generic/usb_cdc.c
+#src-$(CONFIG_USBSERIAL) += generic/usb_cdc.c
 src-$(CONFIG_SERIAL) += esp32/serial.c generic/serial_irq.c
 src-$(CONFIG_HAVE_GPIO_HARD_PWM) += esp32/hard_pwm.c
 

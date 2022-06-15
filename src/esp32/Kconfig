@@ -94,8 +94,12 @@ config FLASH_START
 
 config USBSERIAL
     bool
+    default y
+
 config SERIAL
     bool
+    default y
+
 choice
     prompt "Communication interface"
     config ESP32_USB
