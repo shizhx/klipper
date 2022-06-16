@@ -7,7 +7,8 @@ MCU=$(patsubst "%",%,$(CONFIG_MCU))
 # Libraries source
 
 dirs-y += src/esp32 \
-	src/generic
+	src/generic \
+	lib/esp32/hal
 
 CFLAGS += -Ilib/esp32/config/$(MCU) \
 	-Ilib/esp32/esp_common/include \
@@ -21,6 +22,10 @@ CFLAGS += -Ilib/esp32/config/$(MCU) \
 
 CFLAGS_klipper.elf += --specs=nano.specs --specs=nosys.specs
 CFLAGS_klipper.elf += -T lib/esp32/ld/$(MCU)/memory.ld -T lib/esp32/ld/$(MCU)/sections.ld -T lib/esp32/soc/$(MCU)/ld/$(MCU).peripherals.ld
+
+# HAL
+src-y += ../lib/esp32/hal/uart_hal.c \
+	../lib/esp32/hal/uart_hal_iram.c
 
 # Add source files
 src-y += esp32/main.c esp32/gpio.c esp32/timer.c generic/alloc.c
